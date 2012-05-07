@@ -49,6 +49,7 @@ syntax on
 filetype on
 
 set backup
-set backupdir=~/.vim-backup/
-colorscheme evening
+silent !mkdir -p ~/.vim/backup
+set backupdir=~/.vim/backup/
+colorscheme dusk
 cnoreabbrev W w
