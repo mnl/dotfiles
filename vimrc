@@ -53,11 +53,7 @@ filetype on
 set backup
 silent !mkdir -p ~/.vim/backup
 set backupdir=~/.vim/backup/
-<<<<<<< HEAD
 
 " misc
-colorscheme dusk
-=======
-!silent colorscheme dusk
->>>>>>> d04fa3b3ad42f6313ebd94c99775ccd3e071d5c9
+\ silent colorscheme dusk
 cnoreabbrev W w
