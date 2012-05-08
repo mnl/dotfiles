@@ -33,6 +33,7 @@ augroup encrypted
     \ setlocal nobin
 augroup END
 
+" GUI specific options
 if has('gui_running')
   colorscheme evening
   set lines=50 columns=100
@@ -40,16 +41,19 @@ endif
 
 set tabstop=4
 
-    " indenting
-    set smartindent
-    set autoindent
-    set smarttab
+" indenting
+ set smartindent
+ set autoindent
+ set smarttab
 
 syntax on
 filetype on
 
+" backups
 set backup
 silent !mkdir -p ~/.vim/backup
 set backupdir=~/.vim/backup/
+
+" misc
 colorscheme dusk
 cnoreabbrev W w
