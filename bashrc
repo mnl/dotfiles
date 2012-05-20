@@ -1,6 +1,5 @@
-#.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# Mickes .bashrc
+# Updated on maj 21 01:13:23 CEST 2012
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
