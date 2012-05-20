@@ -1,5 +1,8 @@
-"3.0 (created: 2011/03/06 22:51:04)
+"3.4 (created: 2012/04/02 20:07:29)
 
-source! ~/.vimperatorrc.local
+set hintchars=12345qwert
+set showstatuslinks=0
+" copy page title to the clipboard (with ALT+y)
+map <silent> <A-y> :js util.copyToClipboard(content.document.title, true)<cr>
 
 " vim: set ft=vimperator:
