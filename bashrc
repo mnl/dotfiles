@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+#.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -58,9 +58,9 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
+[xkE]term*|rxvt*|cygwin|screen*|dtterm)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1";
+	titlestring='\e]0;%s\007';;
 *)
     ;;
 esac
@@ -81,7 +81,13 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias hax='echo -ne "\e[34m" ; while true ; do sleep 0.01; echo -ne "\e[$(($RANDOM % 2 + 1))m"; tr -c "[:alpha:]" " " < /dev/urandom |dd count=1 bs=50 2> /dev/null; done'
+
+# misc aliases
+alias du='du -kh'       # Makes a more readable output.
+alias df='df -kTh'
+
+alias tracert='traceroute'
+alias rot13='tr N-ZA-Mn-za-m A-Za-z'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -97,4 +103,25 @@ fi
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
+fi
+
+# neat functions
+myip() { curl -s checkip.dyndns.org|grep -o '[0-9.]\{7,15\}'; }
+hax() { echo -ne "\e[34m" ; while true ; do sleep 0.01; echo -ne "\e[$(($RANDOM % 2 + 1))m"; tr -c "[:alpha:]" " " < /dev/urandom |dd count=1 bs=50 2> /dev/null; done }
+
+# important exports
+export BROWSER=/usr/bin/firefox 
+export EDITOR=vim
+export PAGER=less
+
+# make there commands run in background automatically
+function soffice() { command soffice "$@" & }
+function firefox() { command firefox "$@" & }
+function xpdf() { command xpdf "$@" & }
+function vlc() { command vlc "$@" & }
+function gvim() { command gvim "$@" & }
+
+# run local bashrc that might exist
+if [[ -f ~/.bashrc-"$HOSTNAME" ]]; then
+. ~/.bashrc-"$HOSTNAME"
 fi
