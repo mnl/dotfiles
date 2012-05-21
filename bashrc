@@ -107,6 +107,8 @@ fi
 # neat functions
 myip() { curl -s checkip.dyndns.org|grep -o '[0-9.]\{7,15\}'; }
 hax() { echo -ne "\e[34m" ; while true ; do sleep 0.01; echo -ne "\e[$(($RANDOM % 2 + 1))m"; tr -c "[:alpha:]" " " < /dev/urandom |dd count=1 bs=50 2> /dev/null; done }
+#colored diff output. $1 = red, $2 = green
+cdiff(){ diff -U3 $1 $2 |sed -e 's/^+/\x1b\[32m /;s/^-/\x1b[31m /;s/$/\x1b[0m/'; }
 
 # important exports
 export BROWSER=/usr/bin/firefox 
