@@ -38,10 +38,11 @@ set hlsearch
  set autoindent
  set smarttab
 
-" backups
+" backups and swapfiles
 set backup
 silent !mkdir -p ~/.vim/backup
 set backupdir=~/.vim/backup/
+set directory=~/.vim/backup/
 
 " shortcuts
 cnoreabbrev W w
