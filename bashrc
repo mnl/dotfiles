@@ -111,6 +111,7 @@ hax() { echo -ne "\e[34m" ; while true ; do sleep 0.01; echo -ne "\e[$(($RANDOM 
 cdiff() { diff -U3 $1 $2 |sed -e 's/^+/\x1b\[32m /;s/^-/\x1b[31m /;s/$/\x1b[0m/'; }
 #print the n biggest memory hogs
 memhogs() { ps aux | awk '$11!~/\[*\]/ {print $6/1024" MB\t"$2"\t"$11,$12,$13,$14}' |sort -gr|head -$1; }
+dos2unix() { tr -d '\r'; }
 
 # important exports
 export BROWSER=/usr/bin/firefox 
