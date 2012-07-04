@@ -85,6 +85,7 @@ alias l='ls -CF'
 alias du='du -kh'       # Makes a more readable output.
 alias df='df -kTh'
 
+alias xcp='xclip -selection clipboard'
 alias tracert='traceroute'
 alias rot13='tr N-ZA-Mn-za-m A-Za-z'
 
