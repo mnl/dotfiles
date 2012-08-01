@@ -114,6 +114,12 @@ cdiff() { diff -U3 $1 $2 |sed -e 's/^+/\x1b\[32m /;s/^-/\x1b[31m /;s/$/\x1b[0m/'
 memhogs() { ps aux | awk '$11!~/\[*\]/ {print $6/1024" MB\t"$2"\t"$11,$12,$13,$14}' |sort -gr|head -$1; }
 dos2unix() { tr -d '\r'; }
 
+#copy to RAM
+bi () {	cp -a $1 /dev/shm
+		cd /dev/shm/$1
+		here=`pwd`
+		echo you are here $here }
+
 # important exports
 export BROWSER=/usr/bin/firefox 
 export EDITOR=vim
