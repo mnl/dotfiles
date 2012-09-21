@@ -115,10 +115,7 @@ memhogs() { ps aux | awk '$11!~/\[*\]/ {print $6/1024" MB\t"$2"\t"$11,$12,$13,$1
 dos2unix() { tr -d '\r'; }
 
 #copy to RAM
-bi () {	cp -a $1 /dev/shm
-		cd /dev/shm/$1
-		here=`pwd`
-		echo you are here $here }
+bi () {	cp -a $1 /dev/shm; cd /dev/shm/$1; 	here=`pwd`;	echo you are here $here; }
 
 # important exports
 export BROWSER=/usr/bin/firefox 
@@ -136,3 +133,4 @@ function gvim() { command gvim "$@" & }
 if [[ -f ~/.bashrc-"$HOSTNAME" ]]; then
 . ~/.bashrc-"$HOSTNAME"
 fi
+

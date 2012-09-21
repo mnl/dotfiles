@@ -107,3 +107,6 @@ if has("autocmd")
   augroup END
 
 endif " has("autocmd")
+
+" Arduino
+autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino" to your .vimrc
