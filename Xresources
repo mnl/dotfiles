@@ -1,0 +1,115 @@
+URxvt.depth: 32
+
+!True transparency
+!URxvt.background: rgba:1111/1111/1111/dddd
+URxvt.background: [85]#000000
+
+!Native transparency
+!URxvt.transparent: true
+! URxvt.shading: 0 to 99 darkens, 101 to 200 lightens
+!URxvt.shading: 110
+
+! scrollbar style - rxvt (default), plain (most compact), next, or xterm
+URxvt.scrollstyle: plain
+!URxvt.scrollBar: false
+URxvt.scrollBar_right: true
+
+!Font
+URxvt.font: xft:Liberation Mono:size=9
+
+!Icon
+URxvt.iconFile:    /usr/share/icons/hicolor/scalable/apps/Terminal.svg
+
+!Clickable URLs
+URxvt.perl-ext-common:  default,matcher
+URxvt.matcher.button:   1
+
+!Yankable URLS
+URxvt.perl-ext:      default,url-select
+URxvt.keysym.M-u:    perl:url-select:select_next
+URxvt.urlLauncher:   firefox
+URxvt.underlineURLs: true
+
+!Colors
+!
+! black
+URxvt.color0  : #2E2E34343636
+URxvt.color8  : #555557575353
+! ! red
+URxvt.color1  : #CCCC00000000
+URxvt.color9  : #EFEF29292929
+! ! green
+URxvt.color2  : #4E4E9A9A0606
+URxvt.color10 : #8A8AE2E23434
+! ! yellow
+URxvt.color3  : #C4C4A0A00000
+URxvt.color11 : #FCFCE9E94F4F
+! ! blue
+URxvt.color4  : #34346565A4A4
+URxvt.color12 : #72729F9FCFCF
+! ! magenta
+URxvt.color5  : #757550507B7B
+URxvt.color13 : #ADAD7F7FA8A8
+! ! cyan
+URxvt.color6  : #060698209A9A
+URxvt.color14 : #3434E2E2E2E2
+! ! white
+URxvt.color7  : #D3D3D7D7CFCF
+URxvt.color15 : #EEEEEEEEECEC
+
+URxvt*foreground: White
+URxvt*background: Black
+
+!$TERM name
+XTerm*termName:xterm-256color
+!URxvt*termName:rxvt-unicode
+URxvt*termName:xterm-256color
+
+! ! XTerm stuff
+!
+! !
+XTerm*geometry:88x34
+XTerm*faceName:           Liberation Mono:regular:pixelsize=12
+!xterm*faceName:           terminus:regular:pixelsize=12
+!xterm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
+XTerm*dynamicColors:      true
+XTerm*utf8:               2
+XTerm*eightBitInput:      true
+XTerm*saveLines:          512
+XTerm*scrollKey:          true
+XTerm*scrollTtyOutput:    false
+XTerm*scrollBar:          true
+XTerm*rightScrollBar:     true
+XTerm*jumpScroll:         true
+XTerm*multiScroll:        true
+XTerm*toolBar:            false
+!
+!Colors
+!
+! black
+XTerm*color0  : #2E2E34343636
+XTerm*color8  : #555557575353
+! ! red
+XTerm*color1  : #CCCC00000000
+XTerm*color9  : #EFEF29292929
+! ! green
+XTerm*color2  : #4E4E9A9A0606
+XTerm*color10 : #8A8AE2E23434
+! ! yellow
+XTerm*color3  : #C4C4A0A00000
+XTerm*color11 : #FCFCE9E94F4F
+! ! blue
+XTerm*color4  : #34346565A4A4
+XTerm*color12 : #72729F9FCFCF
+! ! magenta
+XTerm*color5  : #757550507B7B
+XTerm*color13 : #ADAD7F7FA8A8
+! ! cyan
+XTerm*color6  : #060698209A9A
+XTerm*color14 : #3434E2E2E2E2
+! ! white
+XTerm*color7  : #D3D3D7D7CFCF
+XTerm*color15 : #EEEEEEEEECEC
+
+XTerm*foreground: White
+XTerm*background: Black
