@@ -64,31 +64,6 @@ case "$TERM" in
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# misc aliases
-alias du='du -kh'       # Makes a more readable output.
-alias df='df -kTh'
-
-alias xcp='xclip -selection clipboard'
-alias tracert='traceroute'
-alias rot13='tr N-ZA-Mn-za-m A-Za-z'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -113,6 +88,8 @@ cdiff() { diff -U3 $1 $2 |sed -e 's/^+/\x1b\[32m /;s/^-/\x1b[31m /;s/$/\x1b[0m/'
 #print the n biggest memory hogs
 memhogs() { ps aux | awk '$11!~/\[*\]/ {print $6/1024" MB\t"$2"\t"$11,$12,$13,$14}' |sort -gr|head -$1; }
 dos2unix() { tr -d '\r'; }
+#Draw ascii box around $1
+box() { t="LL$1RR";c=${2:-#}; echo ${t//?/$c}; echo "$c $1 $c"; echo ${t//?/$c};} #From bartonski
 
 #copy to RAM
 bi () {	cp -a $1 /dev/shm; cd /dev/shm/$1; 	here=`pwd`;	echo you are here $here; }
@@ -128,6 +105,7 @@ function firefox() { command firefox "$@" & }
 function xpdf() { command xpdf "$@" & }
 function vlc() { command vlc "$@" & }
 function gvim() { command gvim "$@" & }
+function thunar() { command thunar "$@" & }
 
 # run local bashrc that might exist
 if [[ -f ~/.bashrc-"$HOSTNAME" ]]; then
