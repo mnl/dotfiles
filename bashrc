@@ -57,12 +57,14 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-[xkE]term*|rxvt*|cygwin|screen*|dtterm)
+[xkE]term*|urxvt*|cygwin|screen*|dtterm)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1";
-	titlestring='\e]0;%s\007';;
+	titlestring='\e]0;h%s\007';;
 *)
     ;;
 esac
+# trim dirs to 3
+PROMPT_DIRTRIM=2
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -94,6 +96,15 @@ box() { t="LL$1RR";c=${2:-#}; echo ${t//?/$c}; echo "$c $1 $c"; echo ${t//?/$c};
 #copy to RAM
 bi () {	cp -a $1 /dev/shm; cd /dev/shm/$1; 	here=`pwd`;	echo you are here $here; }
 
+#remove stuff from bash command history
+forget() { H=$HOME/.bash_history;G=$(grep $1 $H|wc -l); sed '/'$1'/d' $H|sponge $H ; echo "Found and removed $G occurences of $1"; }
+
+#print nth line of stdin (ls -l|nth 3)
+nth(){(for ((x=0;x<=$1;x++)) ; do read -r; done ; echo "$REPLY")}
+
+#Get author and title from most epub-books
+epubtitle() { unzip -p "$1" *.opf|xmlstarlet sel  -N "dc=http://purl.org/dc/elements/1.1/" -N "opf=http://www.idpf.org/2007/opf" -t -v '////dc:creator/@opf:file-as[contains(@opf:role,'aut')]' -o ' - ' -v '////dc:title' -n 2>/dev/null; }
+
 # important exports
 export BROWSER=/usr/bin/firefox 
 export EDITOR=vim
@@ -112,3 +123,5 @@ if [[ -f ~/.bashrc-"$HOSTNAME" ]]; then
 . ~/.bashrc-"$HOSTNAME"
 fi
 
+export PATH=$PATH:"/home/users/micke/.gem/ruby/2.0.0/bin:/home/users/micke/sh"
+export LIBLG_DRVIVERS_PATH=/usr/lib/vdpau:/usr/lib/xorg/modules/dri

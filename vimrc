@@ -1,7 +1,7 @@
 
 """""""""""""""""""""""""""""""""
 " Mickes VIMRC                  "
-" Sun Sep 25 23:40:32 CEST 2011 "
+" Sat sep  7 18:24:20 CEST 2013 "
 """""""""""""""""""""""""""""""""
 
 " Don't save backups of *.gpg files
@@ -47,7 +47,8 @@ set directory=~/.vim/backup/
 " shortcuts
 cnoreabbrev W w
 cnoreabbrev Q q
-
+" override readonly
+cmap w!! %!sudo tee > /dev/null %
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -110,3 +111,6 @@ endif " has("autocmd")
 
 " Arduino
 autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino" to your .vimrc
+
+" Rust
+au Syntax rs	runtime! syntax/rust.vim
