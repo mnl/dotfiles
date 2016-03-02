@@ -117,6 +117,7 @@ function xpdf() { command xpdf "$@" & }
 function vlc() { command vlc "$@" & }
 function gvim() { command gvim "$@" & }
 function thunar() { command thunar "$@" & }
+function mecp () { scp "$@" ${SSH_CLIENT%% *}:Desktop/; }
 
 # run local bashrc that might exist
 if [[ -f ~/.bashrc-"$HOSTNAME" ]]; then

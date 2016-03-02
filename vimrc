@@ -33,7 +33,8 @@ set ruler
 set hlsearch
 
 " indenting
- set tabstop=4
+ set shiftwidth=2
+ set tabstop=2
  set smartindent
  set autoindent
  set smarttab
@@ -110,7 +111,8 @@ if has("autocmd")
 endif " has("autocmd")
 
 " Arduino
-autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino" to your .vimrc
+  au BufNewFile,BufRead *.ino setfiletype arduino
+  au BufNewFile,BufRead *.pde setfiletype arduino
 
 " Rust
-au Syntax rs	runtime! syntax/rust.vim
+  au Syntax rs	runtime! syntax/rust.vim

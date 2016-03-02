@@ -33,6 +33,15 @@ URxvt.url-select.launcher:   /home/users/micke/sh/url2browser
 !URxvt.urlLauncher:   /usr/bin/firefox
 URxvt.underlineURLs: true
 
+!Tordeks dpi stuff
+Xft.dpi:         96
+Xft.antialias:   1
+Xft.hinting:     1
+Xft.hintstyle:   hintslight
+!Xft.rgba:        rgb
+!Xft.lcdfilter:   lcddefault
+!Xft.autohint:    0
+
 !Colors
 !
 ! black
