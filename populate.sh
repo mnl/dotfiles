@@ -1,14 +1,14 @@
 #!/bin/bash
 #Simple script to populate directory with symlinks
 shopt -s nullglob
-declare -a ignore=("README.md" "populate.sh")
+declare -a exclude=("README.md" "populate.sh")
 declare path=".dotfiles/"
 cd $HOME
 mkdir -p $path
 declare -a files=($path*)
 
-#Removing files to ignore
-for del in ${ignore[@]}
+#Removing files to exclude
+for del in ${exclude[@]}
 do
 	files=(${files[@]/$path$del})
 done
