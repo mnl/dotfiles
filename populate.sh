@@ -16,6 +16,6 @@ done
 echo "Creating symlinks"
 for f in "${files[@]}" 
 do 
-	Making symlinks and verbosely and asking before overwriting
-	#ln -svi {$path${f#*/},."${f#*/}"}
+	#Making symlinks and verbosely and asking before overwriting
+	ln -svi {$path${f#*/},."${f#*/}"}
 done
