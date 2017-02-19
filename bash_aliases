@@ -20,6 +20,7 @@ alias l='ls -CF'
 # misc aliases
 alias du='du -kh'       # Makes a more readable output.
 alias df='df -kTh'
+alias cdt='cd $(mktemp -d -t XXXX-tmp)'
 
 alias fx='less -FXR' #make less look like cat but with raw ansi
 # make less show contents of directories
@@ -32,6 +33,4 @@ alias jarva='java -jar'
 # dmesg with colored human-readable dates
 alias dmesgc="dmesg -T | sed -e 's|\(^.*'`date +%Y`']\)\(.*\)|\x1b[0;34m\1\x1b[0m - \2|g'"
 
-# Metro Stockholm
-alias metro='wget "http://metropoint.metro.lu/$(date +%Y%m%d)_Stockholm.pdf" -O Metro_Stockholm.pdf.part; mv Metro_Stockholm.pdf{.part,}'
-alias xclean="echo hclean"
+alias dmesg="dmesg -HP"

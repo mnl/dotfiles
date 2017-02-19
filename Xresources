@@ -14,6 +14,9 @@ URxvt.scrollstyle: plain
 !URxvt.scrollBar: false
 URxvt.scrollBar_right: true
 
+! Scroll buffer
+URxvt*scrollWithBuffer: true
+
 !Font
 URxvt.font: xft:Liberation Mono:size=9
 
