@@ -1,7 +1,7 @@
 
 """""""""""""""""""""""""""""""""
 " Mickes VIMRC                  "
-" Sat sep  7 18:24:20 CEST 2013 "
+" lör mar 16 22:55:04 CET 2019
 """""""""""""""""""""""""""""""""
 
 " Don't save backups of *.gpg files
@@ -11,8 +11,9 @@ set backupskip+=*.gpg
 set viminfo=
 
 " colors
- colorscheme wombat256
  set t_Co=256 "my terminals are always colored
+ colorscheme wombat256
+ " Also good: calmar256-dark, golden, lettuce, colorer, midnight
 
 " GUI specific options
 " This replaces .gvimrc
@@ -23,7 +24,8 @@ if has('gui_running')
 endif
 
 " Make clipboard work as expected
-set clipboard=autoselect,unnamed,exclude:cons\|linux
+"set clipboard=autoselect,unnamed,exclude:cons\|linux
+execute pathogen#infect()
 
 " misc
 syntax on
@@ -31,6 +33,7 @@ filetype on
 set visualbell
 set ruler
 set hlsearch
+set nu
 
 " indenting
  set shiftwidth=2
@@ -113,6 +116,26 @@ endif " has("autocmd")
 " Arduino
   au BufNewFile,BufRead *.ino setfiletype arduino
   au BufNewFile,BufRead *.pde setfiletype arduino
+	autocmd! BufNewFile,BufRead *.ino setlocal ft=arduino
+	autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino
 
 " Rust
   au Syntax rs	runtime! syntax/rust.vim
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+silent! iunmap å
+silent! iunmap ä
+silent! iunmap ö
+let g:AutoPairsShortcutFastWrap=''
+
+" Airline
+set laststatus=2 " Always display the statusline in all windows
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+let g:airline_powerline_fonts = 1
+set showtabline=2 " Always display the tabline, even if there is only one tab
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'powerlineish'
+let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+let g:airline_skip_empty_sections = 1
+"let g:airline_extensions = []
+

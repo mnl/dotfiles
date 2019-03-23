@@ -2,7 +2,7 @@ URxvt.depth: 32
 
 !True transparency
 !URxvt.background: rgba:1111/1111/1111/dddd
-URxvt.background: [85]#000000
+URxvt.background: [90]#000000
 
 !Native transparency
 !URxvt.transparent: true
@@ -30,7 +30,7 @@ URxvt.matcher.button:   1
 !Yankable URLS
 URxvt.perl-ext:      default,url-select
 URxvt.keysym.M-u:    perl:url-select:select_next
-URxvt.url-select.launcher:   /home/users/micke/sh/url2browser
+URxvt.url-select.launcher:   /home/mn/sh/url2browser
 !URxvt.url-select.launcher:   /usr/bin/firefox -new-tab
 !URxvt.url-select.underline: trueselect:select_next
 !URxvt.urlLauncher:   /usr/bin/firefox
@@ -78,14 +78,14 @@ URxvt*background: Black
 !$TERM name
 XTerm*termName:xterm-256color
 !URxvt*termName:rxvt-unicode
-URxvt*termName:xterm-256color
+URxvt*termName:rxvt-unicode
 
 ! ! XTerm stuff
 !
 ! !
 XTerm*geometry:88x40
 XTerm*faceName:           Liberation Mono:regular:pixelsize=12
-!xterm*faceName:           terminus:regular:pixelsize=12
+!Xterm*faceName:           terminus:regular:pixelsize=12
 !xterm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
 XTerm*dynamicColors:      true
 XTerm*utf8:               2

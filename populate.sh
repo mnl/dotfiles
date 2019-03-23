@@ -1,7 +1,8 @@
 #!/bin/bash
 #Simple script to populate directory with symlinks
 shopt -s nullglob
-declare -a exclude=("README.md" "populate.sh")
+#Exclude self, README.md and any files given as arguments
+declare -a exclude=(${0#*/} "README.md" "$@")
 declare path=".dotfiles/"
 cd $HOME
 mkdir -p $path
