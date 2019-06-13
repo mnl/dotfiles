@@ -45,8 +45,12 @@ alias ssh='TERM=xterm-256color ssh'
 set -o noclobber
 
 # Completion
-shopt -s cdspell
+shopt -s cdspell cdable_vars
 shopt -s direxpand dirspell
+shopt -s progcomp_alias
+
+# Don't quit with running jobs
+shopt -s checkjobs
 
 # Set up default XDG directories
 export XDG_CONFIG_HOME=$HOME/.config

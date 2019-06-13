@@ -42,8 +42,20 @@ alias getclip="xclip -selection clipboard -o"
 alias setclip="xclip -selection clipboard -i"
 alias clipwget="xclip -o -sel clip | xargs wget"
 
-# neat functions
-myip() { curl -s checkip.dyndns.org|grep -o '[0-9.]\{7,15\}'; }
+# makes aliases work with sudo
+alias sudo='sudo '
+
+# sum numbers in lines from stdin
+alias suml="awk '/^[0-9]{1,}$/ { s += \$0 } END { print s}'"
+alias sumlf="awk '/^[0-9,.]{1,}$/ { s += \$0 } END { printf \"%f\", s}'"
+
+# show ip on network cards ( mostly like 'ip ro' )
+alias ipa="ip -o -4 a | awk 'NR>1 { sub(/\/.*/,\"\",\$4);print \$4,\"on\",\$2 }'"
+# external ip checker
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+# Neat functions
+# myip() { curl -s checkip.dyndns.org|grep -o '[0-9.]\{7,15\}'; }
 # colored diff output. $1 = red, $2 = green
 cdiff() { diff -U3 $1 $2 |sed -e 's/^+/\x1b\[32m /;s/^-/\x1b[31m /;s/$/\x1b[0m/'; }
 # print the n biggest memory hogs
@@ -56,6 +68,18 @@ nth() {(for ((x=0;x<=$1;x++)) ; do read -r; done ; echo "$REPLY")}
 o() { xdg-open "$@" & }
 # make and cd to dir
 cdm() { mkdir -p "$1" && cd "$1"; }
+# inverse grep/strip comments and blank lines
+gv() { grep -v -e "${1:-^#}" -e "^\$"; }
+# watch a a file for changes
+fwatch() { while true; do cat "${1:-.}" || break; date "+%nStarting %F %T."; inotifywait -e modify "$1"; done; }
+
+# Arch specific aliases:
+# prefer powerpill for package management
+type -p powerpill > /dev/null && alias p='sudo powerpill' || alias p='sudo pacman'
+# check which package something belongs to
+alias powns='pacman -Qo'
+# show executables in package
+pexes() { pacman -Q "$1" && for f in $(pacman -Ql "$1"); do [[ -x "$f" && -f "$f" ]] && echo "$f";  done; }
 
 #remove stuff from bash command history
 forget() { 
@@ -72,11 +96,16 @@ thunar() { command thunar "$@" & }
 mecp() { scp "$@" ${SSH_CLIENT%% *}:Desktop/; }
 
 # Useless functions :P
+# matrix simulator
 hax() { echo -ne "\e[34m" ; while true ; do sleep 0.01; echo -ne "\e[$(($RANDOM % 2 + 1))m"; tr -c "[:alpha:]" " " < /dev/urandom |dd count=1 bs=50 2> /dev/null; done }
 
-#Draw ascii box around $1
+# draw ascii box around $1
 box() { t="LL$1RR";c=${2:-#}; echo ${t//?/$c}; echo "$c $1 $c"; echo ${t//?/$c}; } #From bartonski
 
+# random BOFH Excuse
+alias bofh='curl -s towel.blinkenlights.nl:666|tr -d "[:cntrl:]"|sed "s/^.*=//;s/$/\n/"'
+
+# extract all the files
 extract() { 
 	if [ -z "$1" ]
 	then

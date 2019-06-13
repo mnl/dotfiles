@@ -53,6 +53,8 @@ cnoreabbrev W w
 cnoreabbrev Q q
 " override readonly
 cmap w!! %!sudo tee > /dev/null %
+" no newline yank
+nmap Y y$
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -123,6 +125,8 @@ endif " has("autocmd")
   au Syntax rs	runtime! syntax/rust.vim
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Fix AutoPairs mapping bug
 silent! iunmap å
 silent! iunmap ä
 silent! iunmap ö
