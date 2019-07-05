@@ -93,7 +93,7 @@ xpdf() { command xpdf "$@" & }
 vlc() { command vlc "$@" & }
 gvim() { command gvim "$@" & }
 thunar() { command thunar "$@" & }
-mecp() { scp "$@" ${SSH_CLIENT%% *}:Desktop/; }
+mecp() { scp -P ${SSH_CLIENT##* } $1 ${SSH_CLIENT%% *}:${2-.}; }
 
 # Useless functions :P
 # matrix simulator

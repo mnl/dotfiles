@@ -66,6 +66,10 @@ export LESSHISTFILE="$XDG_CACHE_HOME"/lesshst
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 export _Z_DATA=$XDG_CACHE_HOME/z/cache
+export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
+
+# Use the existing GPG sockets for ssh
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 
 # Includes user's bin directories in PATH
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
