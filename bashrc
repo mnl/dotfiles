@@ -1,5 +1,5 @@
 # Mickes .bashrc
-# Updated on lör mar 23 13:52:27 CET 2019
+# Updated on mån okt 14 22:29:08 CEST 2019
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -66,7 +66,7 @@ export LESSHISTFILE="$XDG_CACHE_HOME"/lesshst
 export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 export _Z_DATA=$XDG_CACHE_HOME/z/cache
-export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
+#export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 
 # Use the existing GPG sockets for ssh
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
@@ -74,11 +74,11 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 # Includes user's bin directories in PATH
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
-# Use z frequency jumper
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
-
 # Open new terms in current working directory
 [[ -r "/etc/profile.d/vte.sh" ]] && source /etc/profile.d/vte.sh
+
+# Use z frequency jumper (needs to be after vte)
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 # Add colors to less when displaying manpages
 export LESS_TERMCAP_md=$'\e[1;35m' # begin bold - syntax and keywords
@@ -89,3 +89,4 @@ export LESS_TERMCAP_us=$'\e[0;32m' # begin underline "variables"
 export LESS_TERMCAP_ue=$'\e[0m'    # end underline background
 
 export BAT_THEME="Monokai Extended Origin"
+export GPG_TTY=$(tty)

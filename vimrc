@@ -126,6 +126,9 @@ endif " has("autocmd")
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+" Clear screen and remove search highlight (auto :noh)
+nnoremap <C-L> :nohlsearch<CR><C-L>
+
 " Fix AutoPairs mapping bug
 silent! iunmap å
 silent! iunmap ä
