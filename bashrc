@@ -89,4 +89,8 @@ export LESS_TERMCAP_us=$'\e[0;32m' # begin underline "variables"
 export LESS_TERMCAP_ue=$'\e[0m'    # end underline background
 
 export BAT_THEME="Monokai Extended Origin"
+
 export GPG_TTY=$(tty)
+
+# Prevent GTK accessibility stuff from running
+export NO_AT_BRIDGE=1
