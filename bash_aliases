@@ -21,17 +21,23 @@ alias l='ls -CF'
 alias du='du -kh'       # Makes a more readable output.
 alias df='df -kTh'
 alias cdt='cd $(mktemp -d -t XXXX-tmp)'
-alias hc='herbstclient'
-alias sc='systemctl'
+alias hc='herbstclient '
+alias sc='systemctl '
 alias fx='less -FXR' #make less look like cat but with raw ansi
 alias lsl='ls -lhFA | fx'
 alias xcp='xclip -selection clipboard'
 alias tracert='traceroute'
 alias rot13='tr N-ZA-Mn-za-m A-Za-z'
-alias jarva='java -jar'
+alias jarva='nice java -jar'
 alias castv="castnow --tomp4 --ffmpeg-vcodec copy"
-alias wget="wget --continue"
+alias wget="wget --continue "
 alias ip="ip --color=auto"
+
+# completion for aliases
+_completion_loader herbstclient
+complete -o nospace -F _herbstclient_complete hc
+_completion_loader systemctl
+complete -F _systemctl sc
 
 # dmesg with colored human-readable dates
 alias dmesgc="dmesg -T | sed -e 's|\(^.*'`date +%Y`']\)\(.*\)|\x1b[0;34m\1\x1b[0m - \2|g'"
@@ -73,6 +79,8 @@ cdm() { mkdir -p "$1" && cd "$1"; }
 gv() { grep -v -e "${1:-^#}" -e "^\$"; }
 # watch a a file for changes
 fwatch() { while true; do cat "${1:-.}" || break; date "+%nStarting %F %T."; inotifywait -e modify "$1"; done; }
+# List directories only
+lsdir() { ls --classify --group-directories-first -1 "$@" | grep '/$' | column; }
 
 # Arch specific aliases:
 # prefer powerpill for package management
