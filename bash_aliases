@@ -62,6 +62,11 @@ alias ipa="ip -o -4 a | awk 'NR>1 { sub(/\/.*/,\"\",\$4);print \$4,\"on\",\$2 }'
 alias myip="dig +short +timeout=1 myip.opendns.com @resolver1.opendns.com"
 
 # Neat functions
+myipr() {
+	myip=$(dig +short +timeout=1 myip.opendns.com @resolver1.opendns.com || \
+		(echo "Lookup Failed" 1>&2; exit 1))
+	dig +short -x $myip
+}
 # myip() { curl -s checkip.dyndns.org|grep -o '[0-9.]\{7,15\}'; }
 # colored diff output. $1 = red, $2 = green
 cdiff() { diff -U3 $1 $2 |sed -e 's/^+/\x1b\[32m /;s/^-/\x1b[31m /;s/$/\x1b[0m/'; }
@@ -84,7 +89,7 @@ lsdir() { ls --classify --group-directories-first -1 "$@" | grep '/$' | column; 
 
 # Arch specific aliases:
 # prefer powerpill for package management
-type -p powerpill > /dev/null && alias p='sudo powerpill' || alias p='sudo pacman'
+type -p yay > /dev/null && alias p='yay --repo' || alias p='sudo pacman'
 # check which package something belongs to
 alias powns='pacman -Qo'
 # show executables in package

@@ -113,6 +113,9 @@ if has("autocmd")
       \ setlocal nobin
   augroup END
 
+  autocmd BufWritePost *.latex silent! execute "!pdflatex % && biber " expand("%:r") "&& pdflatex %" | redraw!
+
+
 endif " has("autocmd")
 
 " Arduino
@@ -146,3 +149,10 @@ let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linen
 let g:airline_skip_empty_sections = 1
 "let g:airline_extensions = []
 
+filetype plugin indent on
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor = "latex"
+
+set hidden
+set wildmenu
+let mapleader=','
