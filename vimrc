@@ -34,6 +34,9 @@ set visualbell
 set ruler
 set hlsearch
 set nu
+set list
+set showbreak=↪\
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
 " indenting
  set shiftwidth=2
@@ -127,7 +130,6 @@ endif " has("autocmd")
 " Rust
   au Syntax rs	runtime! syntax/rust.vim
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Clear screen and remove search highlight (auto :noh)
 nnoremap <C-L> :nohlsearch<CR><C-L>
@@ -156,3 +158,8 @@ let g:tex_flavor = "latex"
 set hidden
 set wildmenu
 let mapleader=','
+
+" toggle spell checking with ,s
+nmap <silent> <leader>s :set spell!<CR>
+nmap <silent> <leader>n [
+nmap <silent> <leader>m ]

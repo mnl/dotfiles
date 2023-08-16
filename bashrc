@@ -19,16 +19,16 @@ force_color_prompt=yes
 # Trim dirs to 3
 PROMPT_DIRTRIM=2
 
+PS1='\[\033[01;3;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+# Use bash-completion, if available
+[[ "$PS1" && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
+
 # Alias definitions in separate file
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
-PS1='\[\033[01;3;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-
-# Use bash-completion, if available
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
-    . /usr/share/bash-completion/bash_completion
 
 # Make less show contents of directories instead of complain
 export LESSOPEN='|dir=%s;test -d "$dir" && ls -lah --color "$dir"'

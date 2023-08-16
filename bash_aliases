@@ -147,3 +147,6 @@ extract() {
     fi
 fi
 }
+chsame() { chmod --reference=$1 $2; chown --reference=$1 $2; }
+
+urldecode='python3 -c "import sys, urllib; print(urllib.parse.unquote(sys.stdin.read()))"'
